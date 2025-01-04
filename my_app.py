@@ -21,7 +21,7 @@ class MainWin(QWidget):
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.hello_text)
         self.layout.addWidget(self.instruction)
-        self.layout.addWidget(self.button)
+        self.layout.addWidget(self.button, alignment = Qt.AlignCenter)
         self.setLayout(self.layout)
     def connects(self):
         self.button.clicked.connect(self.next_click)
