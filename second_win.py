@@ -1,19 +1,17 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget,QLabel, QPushButton,QVBoxLayout,QHBoxLayout, QLineEdit
+from PyQt5.QtWidgets import QLabel, QPushButton, QVBoxLayout, QLineEdit
 from instr import *
 from final_win import *
+from base_win import BaseWin
 
-class TestWin(QWidget):
+
+class TestWin(BaseWin):
     def __init__(self):
         super().__init__()
-        self.set_appear()
+        self.set_appear(txt_title)
         self.iniUI()
         self.connects()
         self.show()
-    def set_appear(self):
-        self.setWindowTitle(txt_title)
-        self.resize(win_width, win_height)
-        self.move(win_x, win_y)
 
     def iniUI(self):
         self.txt_name = QLabel(txt_name)
@@ -31,31 +29,22 @@ class TestWin(QWidget):
         self.test_result_end = QLineEdit(txt_hinttest3)
         self.button_send_results = QPushButton(txt_sendresults)
 
-        self.instruction = QLabel(txt_instruction)
-        self.button = QPushButton(txt_next)
-        self.left_layout = QVBoxLayout(self)
-        self.right_layout = QVBoxLayout(self)
-        self.horizontal_layout = QHBoxLayout(self)
-        self.left_layout.addWidget(self.txt_name, alignment = Qt.AlignCenter)
-        self.left_layout.addWidget(self.name, alignment = Qt.AlignCenter)
-        self.left_layout.addWidget(self.txt_age)
-        self.left_layout.addWidget(self.age)
-        self.left_layout.addWidget(self.test1)
-        self.left_layout.addWidget(self.button_test1)
-        self.left_layout.addWidget(self.result_test1)
-        self.left_layout.addWidget(self.test2)
-        self.left_layout.addWidget(self.button_test2)
-        self.left_layout.addWidget(self.test3)
-        self.left_layout.addWidget(self.button_test3)
-        self.left_layout.addWidget(self.test_result_first)
-        self.left_layout.addWidget(self.test_result_end)
-        self.left_layout.addWidget(self.button_send_results, alignment = Qt.AlignCenter)
-        # self.left_layout.addWidget(self.horizontal_layout)
-        # self.horizontal_layout.addWidget(self.left_layout, alignment = Qt.AlignHCenter)
-        # self.horizontal_layout.addWidget(self.right_layout)
-        # self.horizontal_layout.addWidget(self.left_layout, alignment = Qt.AlignCenter)
-        # self.setLayout(self.right_layout)
-        self.setLayout(self.left_layout)
+        self.layout = QVBoxLayout()
+        self.layout.addWidget(self.txt_name, alignment=Qt.AlignCenter)
+        self.layout.addWidget(self.name, alignment=Qt.AlignCenter)
+        self.layout.addWidget(self.txt_age)
+        self.layout.addWidget(self.age)
+        self.layout.addWidget(self.test1)
+        self.layout.addWidget(self.button_test1)
+        self.layout.addWidget(self.result_test1)
+        self.layout.addWidget(self.test2)
+        self.layout.addWidget(self.button_test2)
+        self.layout.addWidget(self.test3)
+        self.layout.addWidget(self.button_test3)
+        self.layout.addWidget(self.test_result_first)
+        self.layout.addWidget(self.test_result_end)
+        self.layout.addWidget(self.button_send_results, alignment=Qt.AlignCenter)
+        self.setLayout(self.layout)
     def connects(self):
         self.button_send_results.clicked.connect(self.next_click)
     def next_click(self):
