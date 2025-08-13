@@ -1,26 +1,23 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget,QLabel, QPushButton,QVBoxLayout,QHBoxLayout, QLineEdit
+from PyQt5.QtWidgets import QLabel, QVBoxLayout
 from instr import *
-from final_win import *
+from base_win import BaseWin
 
-class FinalWin(QWidget):
+
+class FinalWin(BaseWin):
     def __init__(self):
         super().__init__()
-        self.set_appear()
+        self.set_appear(txt_finalwin)
         self.iniUI()
         self.show()
-    def set_appear(self):
-        self.setWindowTitle(txt_finalwin)
-        self.resize(win_width, win_height)
-        self.move(win_x, win_y)
 
     def iniUI(self):
         self.txt_index = QLabel(txt_index)
         self.txt_workheart = QLabel(txt_workheart)
-        self.left_layout = QVBoxLayout(self)
-        self.left_layout.addWidget(self.txt_index, alignment = Qt.AlignCenter)
-        self.left_layout.addWidget(self.txt_workheart, alignment = Qt.AlignCenter)
-        self.setLayout(self.left_layout)
+        self.layout = QVBoxLayout()
+        self.layout.addWidget(self.txt_index, alignment=Qt.AlignCenter)
+        self.layout.addWidget(self.txt_workheart, alignment=Qt.AlignCenter)
+        self.setLayout(self.layout)
 
 
 

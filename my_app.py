@@ -1,18 +1,17 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget,QLabel, QPushButton,QVBoxLayout,QHBoxLayout, QLineEdit
+from PyQt5.QtWidgets import QApplication, QLabel, QPushButton, QVBoxLayout
 from instr import *
 from second_win import *
-class MainWin(QWidget):
+from base_win import BaseWin
+
+
+class MainWin(BaseWin):
     def __init__(self):
         super().__init__()
-        self.set_appear()
+        self.set_appear(txt_title)
         self.iniUI()
         self.connects()
         self.show()
-    def set_appear(self):
-        self.setWindowTitle(txt_title)
-        self.resize(win_width, win_height)
-        self.move(win_x, win_y)
 
     def iniUI(self):
         self.hello_text = QLabel(txt_hello)
@@ -28,8 +27,6 @@ class MainWin(QWidget):
     def next_click(self):
         self.hide()
         self.tw = TestWin()
-    # def show(self):
-    #     pass
 app = QApplication([])
 mw = MainWin()
 app.exec_()
