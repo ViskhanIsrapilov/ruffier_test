@@ -16,6 +16,12 @@ QWidget {
 QLabel {
     color: #444;
 }
+QLineEdit {
+    border: 1px solid #ff9aae;
+    border-radius: 6px;
+    padding: 4px;
+    background: #ffffff;
+}
 QPushButton {
     background-color: #ff9aae;
     color: white;
